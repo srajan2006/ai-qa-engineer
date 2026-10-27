@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI QA ENGINEER — Multi-Agent Code Quality & Testing Platform</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background decorative glows -->
+  <div class="glow-orb top-left"></div>
+  <div class="glow-orb top-right"></div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-title">AI QA ENGINEER</h1>
+        <p class="brand-subtitle">Multi-Agent AI-Powered Automated Code Quality & Testing Platform</p>
+      </div>
+    </div>
+    <div class="nav-status">
+      <span class="badge badge-pulse" id="mode-badge">
+        <span class="status-dot"></span>
+        <span id="mode-text">Connecting...</span>
+      </span>
+      <span class="badge badge-neutral" id="model-badge">Gemini 2.5 Flash</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Project Selection & Launch Card -->
+    <section class="card launcher-card">
+      <div class="launcher-header">
+        <div>
+          <h2>Target Project Selection</h2>
+          <p class="text-muted">Choose a sample Python codebase or upload a repository ZIP to initiate multi-agent QA analysis.</p>
+        </div>
+        <div class="launcher-actions">
+          <button class="btn btn-secondary" id="btn-use-demo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+            Load Built-in Demo Project
+          </button>
+          <label class="btn btn-secondary file-upload-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Project (.ZIP)
+            <input type="file" id="file-input" accept=".zip" style="display:none;">
+          </label>
+          <button class="btn btn-primary" id="btn-start-analysis">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            START AI QA ANALYSIS
+          </button>
+        </div>
+      </div>
+
+      <div class="selected-project-info" id="selected-project-banner">
+        <div class="project-info-left">
+          <span class="label">Target:</span>
+          <span class="value" id="target-project-name">demo_project/ (Built-in Demo with Planted Issues)</span>
+        </div>
+        <div class="project-info-right" id="demo-files-tags">
+          <span class="tag">calculator.py</span>
+          <span class="tag">user_service.py</span>
+          <span class="tag">payment.py</span>
+          <span class="tag">database.py</span>
+          <span class="tag">utils.py</span>
+          <span class="tag">test_calculator.py</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multi-Agent Workflow Pipeline -->
+    <section class="card workflow-card" id="workflow-section">
+      <div class="section-title-row">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          LangGraph Multi-Agent Orchestration Pipeline
+        </h3>
+        <div class="progress-container">
+          <span class="progress-text" id="progress-percent">0% Completed</span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="pipeline-progress-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="agents-grid">
+        <div class="agent-node" id="node-code_loader">
+          <div class="agent-icon">📂</div>
+          <div class="agent-info">
+            <h4>Code Loader</h4>
+            <span class="agent-state" id="state-code_loader">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-code_analyzer">
+          <div class="agent-icon">🔍</div>
+          <div class="agent-info">
+            <h4>Code Analyzer</h4>
+            <span class="agent-state" id="state-code_analyzer">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-security_agent">
+          <div class="agent-icon">🛡️</div>
+          <div class="agent-info">
+            <h4>Security Agent</h4>
+            <span class="agent-state" id="state-security_agent">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-test_generator">
+          <div class="agent-icon">🧠</div>
+          <div class="agent-info">
+            <h4>Test Generator</h4>
+            <span class="agent-state" id="state-test_generator">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-test_runner">
+          <div class="agent-icon">⚡</div>
+          <div class="agent-info">
+            <h4>Test Runner</h4>
+            <span class="agent-state" id="state-test_runner">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-coverage_agent">
+          <div class="agent-icon">📊</div>
+          <div class="agent-info">
+            <h4>Coverage Agent</h4>
+            <span class="agent-state" id="state-coverage_agent">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-bug_analysis">
+          <div class="agent-icon">🐞</div>
+          <div class="agent-info">
+            <h4>Bug Analysis</h4>
+            <span class="agent-state" id="state-bug_analysis">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-root_cause">
+          <div class="agent-icon">🔬</div>
+          <div class="agent-info">
+            <h4>Root Cause (RCA)</h4>
+            <span class="agent-state" id="state-root_cause">Pending</span>
+          </div>
+        </div>
+
+        <div class="agent-arrow">→</div>
+
+        <div class="agent-node" id="node-qa_report">
+          <div class="agent-icon">📑</div>
+          <div class="agent-info">
+            <h4>QA Report</h4>
+            <span class="agent-state" id="state-qa_report">Pending</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section (Revealed upon completion or active polling) -->
+    <div id="results-area" style="display:none;">
+
+      <!-- Top KPI Overview Metrics -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">OVERALL QUALITY SCORE</div>
+          <div class="kpi-value-row">
+            <span class="kpi-number" id="kpi-quality-score">--</span>
+            <span class="kpi-unit">/100</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill meter-good" id="bar-quality" style="width: 0%;"></div>
+          </div>
+          <p class="kpi-subtext" id="kpi-quality-text">Based on weighted multi-agent metrics</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">SECURITY SCORE</div>
+          <div class="kpi-value-row">
+            <span class="kpi-number" id="kpi-security-score">--</span>
+            <span class="kpi-unit">/100</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill meter-warn" id="bar-security" style="width: 0%;"></div>
+          </div>
+          <p class="kpi-subtext" id="kpi-security-text">Bandit AST & Heuristics</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">TEST PASS RATE</div>
+          <div class="kpi-value-row">
+            <span class="kpi-number" id="kpi-pass-rate">--</span>
+            <span class="kpi-unit">%</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill meter-good" id="bar-tests" style="width: 0%;"></div>
+          </div>
+          <p class="kpi-subtext" id="kpi-tests-text">Pytest execution result</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">CODE COVERAGE</div>
+          <div class="kpi-value-row">
+            <span class="kpi-number" id="kpi-coverage">--</span>
+            <span class="kpi-unit">%</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill meter-info" id="bar-coverage" style="width: 0%;"></div>
+          </div>
+          <p class="kpi-subtext" id="kpi-coverage-text">pytest-cov line coverage</p>
+        </div>
+
+        <div class="kpi-card kpi-bugs-card">
+          <div class="kpi-label">TOTAL DEFECTS DETECTED</div>
+          <div class="kpi-value-row">
+            <span class="kpi-number text-danger" id="kpi-bug-count">--</span>
+            <span class="kpi-unit">issues</span>
+          </div>
+          <div class="severity-pills">
+            <span class="pill pill-critical" id="pill-critical">0 Critical</span>
+            <span class="pill pill-major" id="pill-major">0 Major</span>
+            <span class="pill pill-minor" id="pill-minor">0 Minor</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Tabbed Navigation Details -->
+      <section class="card tabs-card">
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="tab-bugs">🐞 Bug Reports & RCA (<span id="tab-bug-count">0</span>)</button>
+          <button class="tab-btn" data-tab="tab-security">🛡️ Security Analysis (<span id="tab-sec-count">0</span>)</button>
+          <button class="tab-btn" data-tab="tab-tests">🧪 AI Generated Tests (<span id="tab-test-count">0</span>)</button>
+          <button class="tab-btn" data-tab="tab-quality">📊 Code Quality & Coverage</button>
+          <button class="tab-btn" data-tab="tab-summary">📑 Executive Report & Approval</button>
+          <button class="tab-btn" data-tab="tab-logs">⚡ Agent Logs</button>
+        </div>
+
+        <div class="tabs-body">
+
+          <!-- TAB 1: BUGS & ROOT CAUSE ANALYSIS -->
+          <div class="tab-pane active" id="tab-bugs">
+            <div class="tab-intro">
+              <h3>Detected Defects & Gemini AI Root Cause Analysis</h3>
+              <p class="text-muted">Click on any bug row to inspect detailed AI root-cause reasoning, business impact, and suggested code remedies.</p>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="bugs-table">
+                <thead>
+                  <tr>
+                    <th>Bug ID</th>
+                    <th>Severity</th>
+                    <th>Category</th>
+                    <th>File</th>
+                    <th>Line</th>
+                    <th>Function</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="bugs-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Root Cause Detail Drawer / Card -->
+            <div class="rca-drawer" id="rca-drawer" style="display:none;">
+              <div class="rca-drawer-header">
+                <div class="rca-header-title">
+                  <span class="badge badge-danger" id="rca-badge">BUG-001</span>
+                  <h4 id="rca-title">Root Cause Analysis</h4>
+                </div>
+                <button class="btn-close" id="btn-close-rca">✕</button>
+              </div>
+              <div class="rca-grid">
+                <div class="rca-block">
+                  <div class="rca-label">🎯 WHY DID THIS HAPPEN? (ROOT CAUSE)</div>
+                  <p class="rca-text" id="rca-why">--</p>
+                </div>
+                <div class="rca-block">
+                  <div class="rca-label">📍 AFFECTED COMPONENT</div>
+                  <p class="rca-text font-mono" id="rca-component">--</p>
+                </div>
+                <div class="rca-block">
+                  <div class="rca-label">💼 BUSINESS IMPACT</div>
+                  <p class="rca-text" id="rca-business">--</p>
+                </div>
+                <div class="rca-block">
+                  <div class="rca-label">⚙️ TECHNICAL IMPACT</div>
+                  <p class="rca-text" id="rca-technical">--</p>
+                </div>
+              </div>
+              <div class="rca-fix-box">
+                <div class="rca-fix-header">
+                  <span class="rca-label">💡 RECOMMENDED FIX</span>
+                  <div class="rca-meta">
+                    <span>Complexity: <strong id="rca-complexity">Low</strong></span>
+                    <span>AI Confidence: <strong id="rca-confidence">95%</strong></span>
+                  </div>
+                </div>
+                <pre><code id="rca-fix-code">--</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: SECURITY ANALYSIS -->
+          <div class="tab-pane" id="tab-security">
+            <div class="tab-intro">
+              <h3>Bandit & Heuristic Security Vulnerability Findings</h3>
+              <p class="text-muted">Static security audit findings categorized by CVSS risk levels.</p>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table" id="security-table">
+                <thead>
+                  <tr>
+                    <th>Rule Code</th>
+                    <th>Severity</th>
+                    <th>File</th>
+                    <th>Line</th>
+                    <th>Vulnerability Details</th>
+                    <th>Remediation Advice</th>
+                  </tr>
+                </thead>
+                <tbody id="security-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 3: GENERATED TESTS -->
+          <div class="tab-pane" id="tab-tests">
+            <div class="tab-intro-row">
+              <div>
+                <h3>Gemini AI-Generated Pytest Test Suite</h3>
+                <p class="text-muted">Automatically synthesized test cases addressing edge cases, boundary values, and bug triggers.</p>
+              </div>
+              <div class="test-stats-summary" id="test-stats-summary">
+                <!-- Passed / Failed counter tags -->
+              </div>
+            </div>
+            <div class="code-viewer-container">
+              <div class="code-viewer-header">
+                <span>test_ai_generated.py</span>
+                <button class="btn btn-xs" id="btn-copy-tests">Copy Tests</button>
+              </div>
+              <pre class="code-viewer"><code id="generated-tests-code"># Tests will appear here...</code></pre>
+            </div>
+          </div>
+
+          <!-- TAB 4: CODE QUALITY & COVERAGE -->
+          <div class="tab-pane" id="tab-quality">
+            <div class="tab-intro">
+              <h3>Static Code Quality & Line Coverage Breakdown</h3>
+              <p class="text-muted">Ruff linting issues, cyclomatic complexity indicators, and pytest-cov statistics.</p>
+            </div>
+            <div class="quality-grid">
+              <div class="quality-card">
+                <h4>Code Complexity & AST Metrics</h4>
+                <div class="metrics-list" id="ast-metrics-list">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+              <div class="quality-card">
+                <h4>Module-by-Module Coverage</h4>
+                <div class="coverage-list" id="file-coverage-list">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-4">Linter & Code Smell Findings</h4>
+            <div class="table-responsive">
+              <table class="data-table" id="linter-table">
+                <thead>
+                  <tr>
+                    <th>Rule</th>
+                    <th>File</th>
+                    <th>Line</th>
+                    <th>Message</th>
+                    <th>Severity</th>
+                  </tr>
+                </thead>
+                <tbody id="linter-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 5: EXECUTIVE SUMMARY & HUMAN APPROVAL -->
+          <div class="tab-pane" id="tab-summary">
+            <div class="tab-intro">
+              <h3>Executive QA Summary & Human-in-the-Loop Governance</h3>
+              <p class="text-muted">Review consolidated AI insights, business risks, and approve or reject the final QA release report.</p>
+            </div>
+
+            <div class="summary-narrative-box">
+              <h4>Senior QA Manager Narrative</h4>
+              <p id="executive-summary-text" class="narrative-text">Executive summary generating...</p>
+            </div>
+
+            <div class="recommendations-box">
+              <h4>Key Action Items & Recommendations</h4>
+              <ul class="recommendations-list" id="recommendations-list">
+                <!-- Populated by JS -->
+              </ul>
+            </div>
+
+            <!-- Human Approval Card -->
+            <div class="approval-card" id="approval-section">
+              <div class="approval-header">
+                <div>
+                  <h4>Human-in-the-Loop QA Sign-off</h4>
+                  <p class="text-muted">Verify findings and mark report status for audit trail.</p>
+                </div>
+                <div class="approval-status-badge" id="approval-status-badge">
+                  Status: Pending Approval
+                </div>
+              </div>
+              <div class="approval-inputs">
+                <input type="text" id="approval-notes" placeholder="Add optional reviewer sign-off notes or remediation requirements..." class="input-text">
+                <div class="approval-btn-group">
+                  <button class="btn btn-success" id="btn-approve-report">
+                    ✓ APPROVE QA REPORT
+                  </button>
+                  <button class="btn btn-danger" id="btn-reject-report">
+                    ✕ REQUEST RE-ANALYSIS / REJECT
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 6: LOGS -->
+          <div class="tab-pane" id="tab-logs">
+            <div class="tab-intro">
+              <h3>Live Supervisor & Agent Activity Logs</h3>
+              <p class="text-muted">Real-time chronological events dispatched across the LangGraph state machine.</p>
+            </div>
+            <div class="terminal-log-window" id="agent-logs-terminal">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Source Code Inspector Modal -->
+  <div class="modal-overlay" id="code-modal" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="agent-icon" style="font-size:1.2rem;">📄</span>
+          <h3 id="modal-filename">filename.py</h3>
+          <span class="tag" id="modal-line-count">0 lines</span>
+        </div>
+        <button class="btn-close" id="btn-close-code-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <pre class="code-viewer"><code id="modal-file-content">Loading...</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <footer class="footer">
+    <p>AI QA ENGINEER &copy; 2026 &bull; Multi-Agent Software Testing & Quality Platform &bull; Built with LangGraph, FastAPI & Gemini 2.5 Flash</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

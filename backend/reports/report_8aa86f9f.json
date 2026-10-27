@@ -1,0 +1,552 @@
+{
+  "report_id": "8aa86f9f",
+  "generated_at": "2026-09-01T21:09:17.222670",
+  "project": {
+    "name": "demo_project",
+    "path": "C:\\Users\\sraja\\.gemini\\antigravity\\scratch\\ai_qa_engine\\demo_project",
+    "files": 7,
+    "total_lines": 418
+  },
+  "scores": {
+    "quality": 37,
+    "security": 0,
+    "test_pass_rate": 93.8,
+    "coverage": 33.8
+  },
+  "summary": {
+    "total_bugs": 11,
+    "critical": 3,
+    "major": 5,
+    "minor": 3,
+    "tests_passed": 15,
+    "tests_failed": 1,
+    "tests_total": 16
+  },
+  "code_quality": {
+    "score": 84,
+    "issue_count": 6,
+    "issues": [
+      {
+        "file": "payment.py",
+        "line": 35,
+        "column": 14,
+        "code": "PLW1510",
+        "message": "`subprocess.run` without explicit `check` argument",
+        "severity": "minor"
+      },
+      {
+        "file": "test_ai_generated.py",
+        "line": 1,
+        "column": 1,
+        "code": "I001",
+        "message": "Import block is un-sorted or un-formatted",
+        "severity": "minor"
+      },
+      {
+        "file": "test_ai_generated.py",
+        "line": 2,
+        "column": 29,
+        "code": "F401",
+        "message": "`calculator.subtract` imported but unused",
+        "severity": "major"
+      },
+      {
+        "file": "test_ai_generated.py",
+        "line": 2,
+        "column": 39,
+        "code": "F401",
+        "message": "`calculator.multiply` imported but unused",
+        "severity": "major"
+      },
+      {
+        "file": "user_service.py",
+        "line": 37,
+        "column": 9,
+        "code": "SIM103",
+        "message": "Return the condition `user[\"password\"] == password` directly",
+        "severity": "major"
+      },
+      {
+        "file": "utils.py",
+        "line": 47,
+        "column": 5,
+        "code": "SIM103",
+        "message": "Return the condition `not age < 0` directly",
+        "severity": "major"
+      }
+    ],
+    "ast_metrics": {
+      "total_functions": 54,
+      "total_classes": 7,
+      "avg_complexity": 6.71,
+      "files_analyzed": 7
+    }
+  },
+  "security": {
+    "score": 0,
+    "critical": 2,
+    "high": 5,
+    "medium": 23,
+    "low": 0,
+    "findings": [
+      {
+        "code": "B105",
+        "severity": "Medium",
+        "confidence": "Medium",
+        "file": "database.py",
+        "line": 11,
+        "description": "Possible hardcoded password: 'SuperSecretDbPassword2026!'",
+        "recommendation": "See Bandit rule B105 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html"
+      },
+      {
+        "code": "B608",
+        "severity": "High",
+        "confidence": "Low",
+        "file": "database.py",
+        "line": 36,
+        "description": "Possible SQL injection vector through string-based query construction.",
+        "recommendation": "See Bandit rule B608 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html"
+      },
+      {
+        "code": "B608",
+        "severity": "High",
+        "confidence": "Low",
+        "file": "database.py",
+        "line": 47,
+        "description": "Possible SQL injection vector through string-based query construction.",
+        "recommendation": "See Bandit rule B608 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html"
+      },
+      {
+        "code": "B608",
+        "severity": "High",
+        "confidence": "Medium",
+        "file": "database.py",
+        "line": 58,
+        "description": "Possible SQL injection vector through string-based query construction.",
+        "recommendation": "See Bandit rule B608 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html"
+      },
+      {
+        "code": "B404",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "payment.py",
+        "line": 5,
+        "description": "Consider possible security implications associated with the subprocess module.",
+        "recommendation": "See Bandit rule B404 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess"
+      },
+      {
+        "code": "B105",
+        "severity": "Medium",
+        "confidence": "Medium",
+        "file": "payment.py",
+        "line": 10,
+        "description": "Possible hardcoded password: 'sk_live_992837482910293847'",
+        "recommendation": "See Bandit rule B105 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html"
+      },
+      {
+        "code": "B602",
+        "severity": "Critical",
+        "confidence": "High",
+        "file": "payment.py",
+        "line": 35,
+        "description": "subprocess call with shell=True identified, security issue.",
+        "recommendation": "See Bandit rule B602 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 7,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 10,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 13,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 16,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 21,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 29,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 34,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 43,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 48,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 56,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 61,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_ai_generated.py",
+        "line": 64,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      },
+      {
+        "code": "B101",
+        "severity": "Medium",
+        "confidence": "High",
+        "file": "test_calculator.py",
+        "line": 9,
+        "description": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+        "recommendation": "See Bandit rule B101 for remediation.",
+        "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html"
+      }
+    ]
+  },
+  "test_results": {
+    "passed": 15,
+    "failed": 1,
+    "total": 16,
+    "pass_rate": 93.8,
+    "failed_tests": [
+      {
+        "name": "test_ai_generated.py::TestCalculateDiscount::test_discount_over_100",
+        "error": "test_ai_generated.py:43: in test_discount_over_100\n    assert result >= 0, \"Discounted price should not be negative\"\nE   AssertionError: Discounted price should not be negative\nE   assert -50.0 >= 0"
+      }
+    ]
+  },
+  "coverage": {
+    "total": 33.8,
+    "lines_covered": 67,
+    "lines_total": 198,
+    "by_file": {
+      "calculator.py": {
+        "covered": 23,
+        "total": 28,
+        "percentage": 82.1
+      },
+      "database.py": {
+        "covered": 0,
+        "total": 37,
+        "percentage": 0.0
+      },
+      "payment.py": {
+        "covered": 0,
+        "total": 26,
+        "percentage": 0.0
+      },
+      "test_ai_generated.py": {
+        "covered": 44,
+        "total": 44,
+        "percentage": 100.0
+      },
+      "test_calculator.py": {
+        "covered": 0,
+        "total": 11,
+        "percentage": 0.0
+      },
+      "user_service.py": {
+        "covered": 0,
+        "total": 31,
+        "percentage": 0.0
+      },
+      "utils.py": {
+        "covered": 0,
+        "total": 21,
+        "percentage": 0.0
+      }
+    }
+  },
+  "bugs": [
+    {
+      "bug_id": "BUG-001",
+      "severity": "Critical",
+      "category": "Runtime Error",
+      "file": "calculator.py",
+      "line": 22,
+      "function": "divide",
+      "description": "Division by zero: no validation of denominator before division.",
+      "confidence": 98
+    },
+    {
+      "bug_id": "BUG-002",
+      "severity": "Critical",
+      "category": "Security",
+      "file": "user_service.py",
+      "line": 11,
+      "function": "module-level",
+      "description": "Hardcoded SECRET_KEY and API_KEY in source code.",
+      "confidence": 99
+    },
+    {
+      "bug_id": "BUG-003",
+      "severity": "Critical",
+      "category": "Security",
+      "file": "database.py",
+      "line": 38,
+      "function": "get_user",
+      "description": "SQL injection vulnerability: f-string used in SQL query.",
+      "confidence": 97
+    },
+    {
+      "bug_id": "BUG-004",
+      "severity": "Major",
+      "category": "Runtime Error",
+      "file": "calculator.py",
+      "line": 55,
+      "function": "average",
+      "description": "ZeroDivisionError when empty list passed to average().",
+      "confidence": 95
+    },
+    {
+      "bug_id": "BUG-005",
+      "severity": "Major",
+      "category": "Logic Error",
+      "file": "calculator.py",
+      "line": 40,
+      "function": "calculate_discount",
+      "description": "Discount over 100% produces negative price \u2014 no upper bound check.",
+      "confidence": 92
+    },
+    {
+      "bug_id": "BUG-006",
+      "severity": "Minor",
+      "category": "Code Quality",
+      "file": "utils.py",
+      "line": 20,
+      "function": "fn1",
+      "description": "Non-descriptive function name 'fn1' \u2014 violates naming conventions.",
+      "confidence": 88
+    },
+    {
+      "bug_id": "BUG-007",
+      "severity": "Minor",
+      "category": "Security",
+      "file": "database.py",
+      "line": 11,
+      "function": "unknown",
+      "description": "Possible hardcoded password: 'SuperSecretDbPassword2026!'",
+      "confidence": 90
+    },
+    {
+      "bug_id": "BUG-008",
+      "severity": "Major",
+      "category": "Security",
+      "file": "database.py",
+      "line": 36,
+      "function": "unknown",
+      "description": "Possible SQL injection vector through string-based query construction.",
+      "confidence": 90
+    },
+    {
+      "bug_id": "BUG-009",
+      "severity": "Major",
+      "category": "Security",
+      "file": "database.py",
+      "line": 47,
+      "function": "unknown",
+      "description": "Possible SQL injection vector through string-based query construction.",
+      "confidence": 90
+    },
+    {
+      "bug_id": "BUG-010",
+      "severity": "Major",
+      "category": "Security",
+      "file": "database.py",
+      "line": 58,
+      "function": "unknown",
+      "description": "Possible SQL injection vector through string-based query construction.",
+      "confidence": 90
+    },
+    {
+      "bug_id": "BUG-011",
+      "severity": "Minor",
+      "category": "Security",
+      "file": "payment.py",
+      "line": 5,
+      "function": "unknown",
+      "description": "Consider possible security implications associated with the subprocess module.",
+      "confidence": 90
+    }
+  ],
+  "root_cause_analysis": [
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-001",
+      "severity": "Critical",
+      "file": "calculator.py",
+      "function": "divide"
+    },
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-002",
+      "severity": "Critical",
+      "file": "user_service.py",
+      "function": "module-level"
+    },
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-003",
+      "severity": "Critical",
+      "file": "database.py",
+      "function": "get_user"
+    },
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-004",
+      "severity": "Major",
+      "file": "calculator.py",
+      "function": "average"
+    },
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-005",
+      "severity": "Major",
+      "file": "calculator.py",
+      "function": "calculate_discount"
+    },
+    {
+      "root_cause": "The function performs division without validating the denominator. When the denominator is zero, Python raises a ZeroDivisionError which is not caught, causing the application to crash.",
+      "affected_component": "calculator.py \u2192 divide()",
+      "fix_suggestion": "Add a guard clause before division: if b == 0: raise ValueError('Denominator cannot be zero')",
+      "fix_complexity": "Low",
+      "confidence": 96,
+      "business_impact": "Any calculation involving division by zero will crash the application, potentially causing data loss or service disruption.",
+      "technical_impact": "Unhandled ZeroDivisionError propagates up the call stack.",
+      "bug_id": "BUG-008",
+      "severity": "Major",
+      "file": "database.py",
+      "function": "unknown"
+    }
+  ],
+  "test_cases_generated": "import pytest\nfrom calculator import add, subtract, multiply, divide, calculate_discount, average, factorial\n\n\nclass TestAdd:\n    def test_add_positive_numbers(self):\n        assert add(2, 3) == 5\n\n    def test_add_negative_numbers(self):\n        assert add(-2, -3) == -5\n\n    def test_add_zero(self):\n        assert add(0, 5) == 5\n\n    def test_add_floats(self):\n        assert abs(add(1.1, 2.2) - 3.3) < 1e-9\n\n\nclass TestDivide:\n    def test_divide_normal(self):\n        assert divide(10, 2) == 5.0\n\n    def test_divide_by_zero(self):\n        \"\"\"This test WILL FAIL - demonstrates the bug.\"\"\"\n        with pytest.raises(ZeroDivisionError):\n            divide(10, 0)\n\n    def test_divide_negative(self):\n        assert divide(-10, 2) == -5.0\n\n\nclass TestCalculateDiscount:\n    def test_valid_discount(self):\n        assert calculate_discount(100, 10) == 90.0\n\n    def test_negative_discount_raises(self):\n        with pytest.raises(ValueError):\n            calculate_discount(100, -5)\n\n    def test_discount_over_100(self):\n        \"\"\"This will NOT raise but will give negative price - bug!\"\"\"\n        result = calculate_discount(100, 150)\n        assert result >= 0, \"Discounted price should not be negative\"\n\n\nclass TestAverage:\n    def test_average_normal(self):\n        assert average([1, 2, 3, 4, 5]) == 3.0\n\n    def test_average_empty_list(self):\n        \"\"\"This test WILL FAIL - demonstrates the empty list bug.\"\"\"\n        with pytest.raises(ZeroDivisionError):\n            average([])\n\n    def test_average_single_element(self):\n        assert average([42]) == 42.0\n\n\nclass TestFactorial:\n    def test_factorial_zero(self):\n        assert factorial(0) == 1\n\n    def test_factorial_positive(self):\n        assert factorial(5) == 120\n\n    def test_factorial_negative(self):\n        \"\"\"This test WILL FAIL - demonstrates negative input bug.\"\"\"\n        with pytest.raises((ValueError, RecursionError)):\n            factorial(-1)",
+  "executive_summary": "[{\"bug_id\": \"BUG-001\", \"severity\": \"Critical\", \"category\": \"Runtime Error\", \"file\": \"calculator.py\", \"line\": 22, \"function\": \"divide\", \"description\": \"Division by zero: function does not validate denominator before dividing.\", \"confidence\": 98}, {\"bug_id\": \"BUG-002\", \"severity\": \"Critical\", \"category\": \"Security\", \"file\": \"user_service.py\", \"line\": 11, \"function\": \"module-level\", \"description\": \"Hardcoded API key and secret found in source code.\", \"confidence\": 99}, {\"bug_id\": \"BUG-003\", \"severity\": \"Critical\", \"category\": \"Security\", \"file\": \"database.py\", \"line\": 38, \"function\": \"get_user\", \"description\": \"SQL injection vulnerability: user input directly interpolated into SQL query.\", \"confidence\": 97}, {\"bug_id\": \"BUG-004\", \"severity\": \"Major\", \"category\": \"Runtime Error\", \"file\": \"calculator.py\", \"line\": 55, \"function\": \"average\", \"description\": \"ZeroDivisionError on empty list: no length check before dividing by len(numbers).\", \"confidence\": 95}, {\"bug_id\": \"BUG-005\", \"severity\": \"Major\", \"category\": \"Logic Error\", \"file\": \"calculator.py\", \"line\": 40, \"function\": \"calculate_discount\", \"description\": \"Discount over 100% produces negative price. No upper bound validation.\", \"confidence\": 92}, {\"bug_id\": \"BUG-006\", \"severity\": \"Minor\", \"category\": \"Code Quality\", \"file\": \"utils.py\", \"line\": 20, \"function\": \"fn1\", \"description\": \"Poor function name 'fn1' provides no context about the function's purpose.\", \"confidence\": 88}]",
+  "recommendations": [
+    "\ud83d\udd34 URGENT: Fix 3 critical bug(s) before any deployment. These include security vulnerabilities and runtime errors.",
+    "\ud83d\udd10 Security: Remove all hardcoded credentials and use environment variables. Apply parameterized SQL queries to prevent injection attacks.",
+    "\ud83d\udfe1 Resolve 5 major bug(s) to prevent production incidents. Add input validation for all edge cases.",
+    "\ud83d\udcca Increase test coverage from 34% to at least 80%. Focus on untested functions in high-risk modules.",
+    "\u2728 Refactor code to improve maintainability: improve naming conventions, add missing docstrings, and handle exceptions properly.",
+    "\ud83d\udd04 Implement CI/CD pipeline to run these checks automatically on every commit.",
+    "\ud83d\udcdd Add pre-commit hooks with Ruff and Bandit for early issue detection."
+  ],
+  "approval_status": "pending"
+}

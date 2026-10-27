@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI QA ENGINEER — Final Year Presentation & Viva Guide</title>
+  <style>
+    :root {
+      --primary: #1e1b4b;
+      --accent: #4f46e5;
+      --accent-light: #e0e7ff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --speaker-bg: #f0fdfa;
+      --speaker-border: #0d9488;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 25px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .meta-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #ffffff;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      text-align: left;
+      margin-top: 15px;
+    }
+
+    .slide-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 28px;
+      margin-bottom: 30px;
+      page-break-inside: avoid;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .slide-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .slide-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+
+    .slide-content ul {
+      list-style-type: none;
+      margin-bottom: 16px;
+    }
+
+    .slide-content li {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .slide-content li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .speaker-box {
+      background: var(--speaker-bg);
+      border-left: 4px solid var(--speaker-border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-top: 14px;
+    }
+
+    .speaker-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--speaker-border);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .speaker-text {
+      font-size: 0.88rem;
+      color: #134e4a;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 12px 0;
+    }
+
+    th, td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .btn-print {
+      display: block;
+      margin: 0 auto 30px auto;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-print:hover {
+      background: #4338ca;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .btn-print { display: none; }
+      .slide-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF (Ctrl + P)</button>
+
+    <header class="header">
+      <h1 class="title">AI QA ENGINEER</h1>
+      <p class="subtitle">Multi-Agent AI-Powered Automated Code Quality & Testing Platform</p>
+      <p style="color:var(--text-muted); font-size:0.9rem;">Presentation Slides, Verbatim Speaker Notes & Viva Defense Guide</p>
+      
+      <div class="meta-bar">
+        <div><strong>Domain:</strong> Applied AI & Software Quality Assurance</div>
+        <div><strong>Orchestration:</strong> LangGraph State Machine</div>
+        <div><strong>LLM Engine:</strong> Google Gemini 2.5 Flash</div>
+        <div><strong>Backend Stack:</strong> Python 3.11+, FastAPI, Pytest, Bandit</div>
+      </div>
+    </header>
+
+    <!-- SLIDE 1 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 1: Title & Introduction</h2>
+        <span class="slide-tag">Slide 01</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Project Title:</strong> AI QA ENGINEER — Multi-Agent Software Quality & Testing Platform</li>
+          <li><strong>Core Mission:</strong> Automate the entire cognitive workflow of a Senior QA Automation Engineer.</li>
+          <li><strong>Autonomous Pipeline:</strong> Combines deterministic testing tools with generative multi-agent reasoning.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"Good morning respected guide, coordinator, and panel members. Today I am presenting 'AI QA Engineer'—an autonomous multi-agent platform designed to automate full-lifecycle code quality inspection, test generation, test execution, security auditing, and root-cause analysis."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 2: Problem Statement</h2>
+        <span class="slide-tag">Slide 02</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Manual QA Bottlenecks:</strong> Writing comprehensive unit tests covering edge cases is time-intensive and developer-dependent.</li>
+          <li><strong>Shallow Happy-Path Testing:</strong> Developers frequently test only valid inputs, missing zero-division, type mismatches, and boundary crashes.</li>
+          <li><strong>Security Blindspots:</strong> Vulnerabilities such as SQL injections and hardcoded secrets routinely slip into production repositories.</li>
+          <li><strong>Fragmented Tooling:</strong> Linters, security scanners, and test runners operate in disconnected silos without unified synthesis.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"In software engineering today, testing is fragmented. Developers juggle multiple tools without unified synthesis, and manually triaging failed tests consumes hours of engineering time. Our system solves this by introducing automated multi-agent reasoning."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 3: Existing vs. Proposed System</h2>
+        <span class="slide-tag">Slide 03</span>
+      </div>
+      <div class="slide-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Traditional Manual QA</th>
+              <th>AI QA Engineer (Proposed)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Test Authoring</strong></td>
+              <td>Manual, slow, misses edge cases</td>
+              <td>Automated synthesis via Gemini 2.5 Flash</td>
+            </tr>
+            <tr>
+              <td><strong>Security Audit</strong></td>
+              <td>Separate manual CLI tools</td>
+              <td>Integrated Bandit AST & Heuristic scan</td>
+            </tr>
+            <tr>
+              <td><strong>Defect Diagnosis</strong></td>
+              <td>Manual stack trace debugging</td>
+              <td>Automated Root Cause Analysis (RCA) with fixes</td>
+            </tr>
+            <tr>
+              <td><strong>Coordination</strong></td>
+              <td>Ad-hoc manual scripts</td>
+              <td>Stateful LangGraph multi-agent pipeline</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"Traditional testing requires manual human intervention at every stage. Our proposed system introduces an autonomous cognitive layer: 10 specialized agents coordinated by LangGraph that strictly separate empirical measurements from generative AI reasoning."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 4: System Architecture & Data Flow</h2>
+        <span class="slide-tag">Slide 04</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Presentation Layer:</strong> Modern Dark Glassmorphic Dashboard with real-time state polling and code inspector.</li>
+          <li><strong>Backend API Layer:</strong> FastAPI asynchronous REST backend managing non-blocking analysis jobs.</li>
+          <li><strong>Orchestration Layer:</strong> LangGraph StateGraph managing sequential agent activations across a shared <code>QAState</code>.</li>
+          <li><strong>Verification Engines:</strong> Subprocess execution of Pytest, pytest-cov, Ruff, and Bandit.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"Our architecture follows a clean 4-tier model. When the user loads a project, FastAPI triggers our LangGraph state machine. Each agent mutates a shared state dictionary in memory, driving both deterministic tools and Gemini API calls."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 5: Multi-Agent Catalog (10 Specialized Agents)</h2>
+        <span class="slide-tag">Slide 05</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>1. Supervisor Agent:</strong> Graph initializer and finalizer; logs timestamps and tracks lifecycle.</li>
+          <li><strong>2. Code Loader Agent:</strong> Discovers Python files, parses metadata, and extracts source buffers.</li>
+          <li><strong>3. Code Analyzer Agent:</strong> Computes AST cyclomatic complexity and checks PEP 8 compliance via Ruff.</li>
+          <li><strong>4. Security Agent:</strong> Executes Bandit to detect SQL injections, command injections, and hardcoded secrets.</li>
+          <li><strong>5. Test Generator Agent:</strong> Prompts Gemini 2.5 Flash to synthesize unit tests for edge cases and failure modes.</li>
+          <li><strong>6. Test Runner Agent:</strong> Executes tests in an isolated subprocess and captures pass/fail counts.</li>
+          <li><strong>7. Coverage Agent:</strong> Measures line-by-line coverage percentage across modules via pytest-cov.</li>
+          <li><strong>8. Bug Analysis Agent:</strong> Correlates test failures and security flags into categorized defect reports.</li>
+          <li><strong>9. Root Cause Agent (RCA):</strong> Explains WHY defects occurred, business impacts, and code-level fixes.</li>
+          <li><strong>10. QA Report Agent:</strong> Calculates Overall Quality (0–100), Security Score, and writes executive summaries.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"Instead of using a single prompt that tries to do everything, we divide responsibilities among 10 specialized agents. This guarantees accuracy, avoids context degradation, and allows isolated error recovery."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 6: Technology Stack</h2>
+        <span class="slide-tag">Slide 06</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Programming Language:</strong> Python 3.11+ (TypedDict, AST visitor, Subprocess isolation)</li>
+          <li><strong>Backend Framework:</strong> FastAPI, Uvicorn, Pydantic v2</li>
+          <li><strong>AI & Orchestration:</strong> Google Gemini 2.5 Flash (<code>google-genai</code> SDK), LangGraph, LangChain Core</li>
+          <li><strong>Testing & Security Tools:</strong> Pytest, Pytest-cov, Ruff, Bandit</li>
+          <li><strong>Frontend:</strong> HTML5, CSS3 Glassmorphism, Vanilla JavaScript (Zero-build simplicity)</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"Our technology stack combines high-performance Python asynchronous APIs with LangGraph state orchestration and Google's Gemini 2.5 Flash model for natural language reasoning and code generation."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 7: Planted Demo Project (demo_project/)</h2>
+        <span class="slide-tag">Slide 07</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><code>calculator.py</code>: Zero-division in <code>divide()</code>, missing upper bound in <code>calculate_discount()</code>, empty list in <code>average()</code>.</li>
+          <li><code>user_service.py</code>: Hardcoded <code>SECRET_KEY</code> and <code>API_KEY</code>, plaintext password storage, MD5 hashing.</li>
+          <li><code>payment.py</code>: Command injection via <code>subprocess(shell=True)</code>, unvalidated payment amounts.</li>
+          <li><code>database.py</code>: Direct f-string SQL injections in <code>get_user()</code> and <code>create_user()</code>.</li>
+          <li><code>utils.py</code>: Insecure deserialization via <code>pickle.load()</code> and code execution via <code>eval()</code>.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"To validate our platform, we created demo_project/ containing realistic defects. In our live test run, the platform successfully identified all security vulnerabilities, exposed logic bugs through generated tests, and diagnosed the root causes."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 8: Root Cause Analysis (RCA) Deep Dive</h2>
+        <span class="slide-tag">Slide 08</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Why It Happened:</strong> Explains the fundamental reason (e.g., missing denominator guard before division).</li>
+          <li><strong>Affected Component:</strong> Pinpoints exact module and function (e.g., <code>calculator.py &rarr; divide()</code>).</li>
+          <li><strong>Business & Technical Impact:</strong> Assesses application crash risks and exception propagation.</li>
+          <li><strong>Prescribed Remediation:</strong> Supplies verified drop-in code fix with confidence rating (e.g., 96%).</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"The standout feature of our platform is Root Cause Analysis. Rather than simply alerting that a test failed, our RCA agent explains why it failed, what business risk it poses, and generates a concrete Python code snippet to fix it."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 9: Scoring Metrics & Human-in-the-Loop Governance</h2>
+        <span class="slide-tag">Slide 09</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Overall Quality Score (0–100):</strong> Weighted: Code Quality (30%) + Test Pass Rate (25%) + Coverage (20%) - Bug Penalties (25%).</li>
+          <li><strong>Security Score (0–100):</strong> Point deductions based on CVSS severity: Critical (-20), High (-10), Medium (-5).</li>
+          <li><strong>Human-in-the-Loop Sign-off:</strong> Interactive governance interface allowing QA leads to officially Approve or Reject reports with audit trail notes.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"We compute an Overall Quality Score and Security Score using a transparent, multi-metric formula. The platform includes a Human-in-the-Loop sign-off interface, allowing QA leads to approve releases or request re-analysis."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <h2 class="slide-title">Slide 10: Conclusion & Future Scope</h2>
+        <span class="slide-tag">Slide 10</span>
+      </div>
+      <div class="slide-content">
+        <ul>
+          <li><strong>Key Strengths:</strong> Zero hallucination in empirical metrics, 80%+ reduction in test triage time, unified security and QA audit.</li>
+          <li><strong>Future Scope:</strong> Expand to Java, TypeScript, and Go; deploy as a GitHub Action for automatic PR gating; auto-patching Pull Requests.</li>
+          <li><strong>Conclusion:</strong> Demonstrates that multi-agent architectures paired with deterministic testing tools create an autonomous, reliable QA engineering platform.</li>
+        </ul>
+        <div class="speaker-box">
+          <div class="speaker-label">🎙️ Speaker Notes (What to say)</div>
+          <p class="speaker-text">"In conclusion, AI QA Engineer proves that multi-agent architectures paired with deterministic tools can automate the complex cognitive workflow of software testing. Thank you, and I now welcome any questions from the panel."</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
